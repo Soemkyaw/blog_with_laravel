@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Blog;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -19,16 +20,14 @@ Route::get('/', function () {
 });
 
 Route::get("/blog/{blog}",function($slug){
-    $path = __DIR__."/../resources/blogs/$slug.html";
-
-    if (!file_exists($path)) {
-       return redirect("/");
-    }
-    $blog = Cache::remember("blog.$slug", 5, function () use($path) {
-        return file_get_contents($path);
-    });
-    // dd($blog);
-    // $blog = file_get_contents($path);
+    $blog = Blog::find($slug);
+    // $path = __DIR__."/../resources/blogs/$slug.html";
+    // if (!file_exists($path)) {
+    //    return redirect("/");
+    // }
+    // $blog = Cache::remember("blog.$slug", 5, function () use($path) {
+    //     return file_get_contents($path);
+    // });
 
     return view('blog',[
         "blog" => $blog
