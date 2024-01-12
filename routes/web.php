@@ -16,19 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('blogs',[
+        "blogs" => $blogs = Blog::all()
+    ]);
 });
 
-Route::get("/blog/{blog}",function($slug){
+Route::get("/blogs/{blog}",function($slug){
     $blog = Blog::find($slug);
-    // $path = __DIR__."/../resources/blogs/$slug.html";
-    // if (!file_exists($path)) {
-    //    return redirect("/");
-    // }
-    // $blog = Cache::remember("blog.$slug", 5, function () use($path) {
-    //     return file_get_contents($path);
-    // });
-
     return view('blog',[
         "blog" => $blog
     ]);
