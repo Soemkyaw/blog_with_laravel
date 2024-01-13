@@ -8,8 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <?= $blog ?>
-    <a href="/">go back</a>
+    <h1><?= $blog->title ?></h1>
+    <p><?= $blog->body ?></p>
+    <button><a href="/">go back</a></button>
 </body>
 </html>
 
