@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1><?= $blog->title ?></h1>
-    <p><?= $blog->body ?></p>
-    <button><a href="/">go back</a></button>
-</body>
-</html>
+<x-layout>
+    <x-slot name="title">
+        <title>{{ $blog->title }}</title>
+    </x-slot>
 
-
-
+    <x-slot name="content">
+        <h1>{{ $blog->title }}</h1>
+        <p>{{ $blog->body }}</p>
+        <button><a href="/">go back</a></button>
+    </x-slot>
+</x-layout>
